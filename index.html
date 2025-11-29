@@ -22,8 +22,6 @@
             --neon-pink: #ec4899;
             --neon-green: #10b981;
             --neon-orange: #f97316;
-            --neon-yellow: #eab308;
-            --neon-red: #ef4444;
             
             --gradient-main: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
             --gradient-alt: linear-gradient(135deg, #f093fb 0%, #f5576c 50%, #f093fb 100%);
@@ -34,15 +32,8 @@
             --glow-purple: rgba(168, 85, 247, 0.4);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
 
         body {
             font-family: 'Inter', -apple-system, sans-serif;
@@ -52,36 +43,14 @@
             overflow-x: hidden;
         }
 
-        ::-webkit-scrollbar {
-            width: 6px;
-        }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--bg-primary); }
+        ::-webkit-scrollbar-thumb { background: var(--gradient-main); border-radius: 3px; }
+        ::selection { background: var(--neon-purple); color: white; }
+        a { color: inherit; text-decoration: none; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
 
-        ::-webkit-scrollbar-track {
-            background: var(--bg-primary);
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: var(--gradient-main);
-            border-radius: 3px;
-        }
-
-        ::selection {
-            background: var(--neon-purple);
-            color: white;
-        }
-
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 32px;
-        }
-
-        /* ==================== HERO SECTION ==================== */
+        /* ==================== HERO ==================== */
         .hero {
             min-height: 100vh;
             position: relative;
@@ -91,13 +60,10 @@
             overflow: hidden;
         }
 
-        /* Animated Grid Background */
         .hero-grid {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
             background-image: 
                 linear-gradient(rgba(168, 85, 247, 0.03) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(168, 85, 247, 0.03) 1px, transparent 1px);
@@ -111,20 +77,16 @@
             100% { transform: perspective(500px) rotateX(60deg) translateY(100px); }
         }
 
-        /* Floating Particles */
         .particles {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
             overflow: hidden;
         }
 
         .particle {
             position: absolute;
-            width: 4px;
-            height: 4px;
+            width: 4px; height: 4px;
             background: var(--neon-purple);
             border-radius: 50%;
             animation: particleFloat 15s infinite;
@@ -132,17 +94,15 @@
         }
 
         .particle:nth-child(1) { left: 5%; animation-delay: 0s; animation-duration: 20s; }
-        .particle:nth-child(2) { left: 12%; animation-delay: -2s; animation-duration: 18s; background: var(--neon-cyan); box-shadow: 0 0 10px var(--neon-cyan); }
-        .particle:nth-child(3) { left: 20%; animation-delay: -4s; animation-duration: 22s; }
-        .particle:nth-child(4) { left: 28%; animation-delay: -6s; animation-duration: 16s; background: var(--neon-pink); box-shadow: 0 0 10px var(--neon-pink); }
-        .particle:nth-child(5) { left: 36%; animation-delay: -8s; animation-duration: 19s; }
-        .particle:nth-child(6) { left: 44%; animation-delay: -10s; animation-duration: 21s; background: var(--neon-blue); box-shadow: 0 0 10px var(--neon-blue); }
-        .particle:nth-child(7) { left: 52%; animation-delay: -12s; animation-duration: 17s; }
-        .particle:nth-child(8) { left: 60%; animation-delay: -14s; animation-duration: 23s; background: var(--neon-cyan); box-shadow: 0 0 10px var(--neon-cyan); }
-        .particle:nth-child(9) { left: 68%; animation-delay: -16s; animation-duration: 20s; }
-        .particle:nth-child(10) { left: 76%; animation-delay: -18s; animation-duration: 18s; background: var(--neon-pink); box-shadow: 0 0 10px var(--neon-pink); }
-        .particle:nth-child(11) { left: 84%; animation-delay: -1s; animation-duration: 19s; background: var(--neon-green); box-shadow: 0 0 10px var(--neon-green); }
-        .particle:nth-child(12) { left: 92%; animation-delay: -5s; animation-duration: 21s; background: var(--neon-orange); box-shadow: 0 0 10px var(--neon-orange); }
+        .particle:nth-child(2) { left: 15%; animation-delay: -2s; animation-duration: 18s; background: var(--neon-cyan); box-shadow: 0 0 10px var(--neon-cyan); }
+        .particle:nth-child(3) { left: 25%; animation-delay: -4s; animation-duration: 22s; }
+        .particle:nth-child(4) { left: 35%; animation-delay: -6s; animation-duration: 16s; background: var(--neon-pink); box-shadow: 0 0 10px var(--neon-pink); }
+        .particle:nth-child(5) { left: 45%; animation-delay: -8s; animation-duration: 19s; }
+        .particle:nth-child(6) { left: 55%; animation-delay: -10s; animation-duration: 21s; background: var(--neon-blue); box-shadow: 0 0 10px var(--neon-blue); }
+        .particle:nth-child(7) { left: 65%; animation-delay: -12s; animation-duration: 17s; }
+        .particle:nth-child(8) { left: 75%; animation-delay: -14s; animation-duration: 23s; background: var(--neon-cyan); box-shadow: 0 0 10px var(--neon-cyan); }
+        .particle:nth-child(9) { left: 85%; animation-delay: -16s; animation-duration: 20s; }
+        .particle:nth-child(10) { left: 95%; animation-delay: -18s; animation-duration: 18s; background: var(--neon-pink); box-shadow: 0 0 10px var(--neon-pink); }
 
         @keyframes particleFloat {
             0% { transform: translateY(100vh) scale(0); opacity: 0; }
@@ -151,7 +111,6 @@
             100% { transform: translateY(-100vh) scale(1); opacity: 0; }
         }
 
-        /* Glowing Orbs */
         .orb {
             position: absolute;
             border-radius: 50%;
@@ -160,28 +119,22 @@
         }
 
         .orb-1 {
-            width: 600px;
-            height: 600px;
+            width: 600px; height: 600px;
             background: radial-gradient(circle, rgba(168, 85, 247, 0.3) 0%, transparent 70%);
-            top: -200px;
-            left: -200px;
+            top: -200px; left: -200px;
         }
 
         .orb-2 {
-            width: 500px;
-            height: 500px;
+            width: 500px; height: 500px;
             background: radial-gradient(circle, rgba(59, 130, 246, 0.25) 0%, transparent 70%);
-            bottom: -150px;
-            right: -150px;
+            bottom: -150px; right: -150px;
             animation-delay: -3s;
         }
 
         .orb-3 {
-            width: 400px;
-            height: 400px;
+            width: 400px; height: 400px;
             background: radial-gradient(circle, rgba(236, 72, 153, 0.2) 0%, transparent 70%);
-            top: 50%;
-            left: 50%;
+            top: 50%; left: 50%;
             transform: translate(-50%, -50%);
             animation-delay: -6s;
         }
@@ -192,7 +145,6 @@
             66% { transform: translate(-20px, 20px) scale(0.9); }
         }
 
-        /* Hero Content */
         .hero-content {
             position: relative;
             z-index: 10;
@@ -218,8 +170,7 @@
         }
 
         .hero-badge .dot {
-            width: 8px;
-            height: 8px;
+            width: 8px; height: 8px;
             background: var(--neon-green);
             border-radius: 50%;
             animation: pulse 2s ease-in-out infinite;
@@ -283,7 +234,6 @@
             font-weight: 600;
         }
 
-        /* Hero Stats */
         .hero-stats {
             display: flex;
             justify-content: center;
@@ -294,10 +244,7 @@
             opacity: 0;
         }
 
-        .hero-stat {
-            text-align: center;
-            position: relative;
-        }
+        .hero-stat { text-align: center; position: relative; }
 
         .hero-stat::after {
             content: '';
@@ -310,9 +257,7 @@
             background: linear-gradient(to bottom, transparent, var(--border-color), transparent);
         }
 
-        .hero-stat:last-child::after {
-            display: none;
-        }
+        .hero-stat:last-child::after { display: none; }
 
         .hero-stat-value {
             font-family: 'Outfit', sans-serif;
@@ -333,7 +278,6 @@
             margin-top: 8px;
         }
 
-        /* CTA Buttons */
         .hero-buttons {
             display: flex;
             justify-content: center;
@@ -380,9 +324,7 @@
             box-shadow: 0 20px 60px var(--glow-purple);
         }
 
-        .btn-primary:hover::before {
-            left: 100%;
-        }
+        .btn-primary:hover::before { left: 100%; }
 
         .btn-secondary {
             background: transparent;
@@ -397,12 +339,11 @@
             box-shadow: 0 20px 60px rgba(168, 85, 247, 0.2);
         }
 
-        /* Projects Marquee - 30+ Projects */
+        /* Projects Marquee */
         .hero-projects {
             position: absolute;
             bottom: 40px;
-            left: 0;
-            right: 0;
+            left: 0; right: 0;
             overflow: hidden;
             animation: fadeIn 1s ease forwards;
             animation-delay: 0.8s;
@@ -418,16 +359,13 @@
             margin-bottom: 20px;
         }
 
-        .projects-marquee-wrapper {
-            position: relative;
-        }
+        .projects-marquee-wrapper { position: relative; }
 
         .projects-marquee-wrapper::before,
         .projects-marquee-wrapper::after {
             content: '';
             position: absolute;
-            top: 0;
-            bottom: 0;
+            top: 0; bottom: 0;
             width: 150px;
             z-index: 10;
             pointer-events: none;
@@ -445,12 +383,10 @@
 
         .projects-marquee {
             display: flex;
-            animation: marquee 60s linear infinite;
+            animation: marquee 80s linear infinite;
         }
 
-        .projects-marquee:hover {
-            animation-play-state: paused;
-        }
+        .projects-marquee:hover { animation-play-state: paused; }
 
         .project-logo-item {
             display: flex;
@@ -488,7 +424,7 @@
             align-items: center;
             justify-content: center;
             font-weight: 700;
-            font-size: 12px;
+            font-size: 11px;
             color: white;
         }
 
@@ -498,16 +434,13 @@
             color: var(--text-secondary);
         }
 
-        .project-logo-item:hover span {
-            color: var(--text-primary);
-        }
+        .project-logo-item:hover span { color: var(--text-primary); }
 
         @keyframes marquee {
             0% { transform: translateX(0); }
             100% { transform: translateX(-50%); }
         }
 
-        /* Scroll Indicator */
         .scroll-indicator {
             position: absolute;
             bottom: 130px;
@@ -521,8 +454,7 @@
         }
 
         .scroll-mouse {
-            width: 28px;
-            height: 44px;
+            width: 28px; height: 44px;
             border: 2px solid rgba(255, 255, 255, 0.2);
             border-radius: 14px;
             position: relative;
@@ -534,8 +466,7 @@
             top: 8px;
             left: 50%;
             transform: translateX(-50%);
-            width: 4px;
-            height: 10px;
+            width: 4px; height: 10px;
             background: var(--gradient-main);
             border-radius: 2px;
             animation: scrollWheel 2s ease-in-out infinite;
@@ -551,27 +482,14 @@
             50% { transform: translateX(-50%) translateY(10px); }
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
 
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(40px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* ==================== NAVIGATION ==================== */
+        /* ==================== NAV ==================== */
         nav {
             position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
+            top: 0; left: 0; right: 0;
             z-index: 1000;
             padding: 20px 0;
             transition: all 0.4s ease;
@@ -632,15 +550,9 @@
         }
 
         /* ==================== SECTIONS ==================== */
-        section {
-            padding: 120px 0;
-            position: relative;
-        }
+        section { padding: 120px 0; position: relative; }
 
-        .section-header {
-            text-align: center;
-            margin-bottom: 80px;
-        }
+        .section-header { text-align: center; margin-bottom: 80px; }
 
         .section-badge {
             display: inline-flex;
@@ -680,7 +592,7 @@
             margin: 0 auto;
         }
 
-        /* ==================== ABOUT SECTION ==================== */
+        /* ==================== ABOUT ==================== */
         .about-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -703,9 +615,7 @@
         .about-card::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
+            top: 0; left: 0; right: 0;
             height: 3px;
             background: var(--gradient-main);
             transform: scaleX(0);
@@ -718,13 +628,10 @@
             box-shadow: 0 30px 60px rgba(168, 85, 247, 0.15);
         }
 
-        .about-card:hover::before {
-            transform: scaleX(1);
-        }
+        .about-card:hover::before { transform: scaleX(1); }
 
         .about-card-icon {
-            width: 70px;
-            height: 70px;
+            width: 70px; height: 70px;
             margin: 0 auto 24px;
             background: var(--gradient-main);
             border-radius: 20px;
@@ -735,9 +642,7 @@
             transition: transform 0.4s ease;
         }
 
-        .about-card:hover .about-card-icon {
-            transform: scale(1.1) rotate(5deg);
-        }
+        .about-card:hover .about-card-icon { transform: scale(1.1) rotate(5deg); }
 
         .about-card-value {
             font-family: 'Outfit', sans-serif;
@@ -758,7 +663,6 @@
             letter-spacing: 1px;
         }
 
-        /* About Content */
         .about-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -804,8 +708,7 @@
         }
 
         .feature-icon {
-            width: 44px;
-            height: 44px;
+            width: 44px; height: 44px;
             background: var(--gradient-main);
             border-radius: 12px;
             display: flex;
@@ -814,12 +717,8 @@
             font-size: 20px;
         }
 
-        .feature-text {
-            font-size: 14px;
-            font-weight: 600;
-        }
+        .feature-text { font-size: 14px; font-weight: 600; }
 
-        /* Code Block */
         .code-block {
             background: var(--bg-card);
             border: 1px solid var(--border-color);
@@ -835,12 +734,7 @@
             border-bottom: 1px solid var(--border-color);
         }
 
-        .code-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-        }
-
+        .code-dot { width: 12px; height: 12px; border-radius: 50%; }
         .code-dot.red { background: #ff5f57; }
         .code-dot.yellow { background: #febc2e; }
         .code-dot.green { background: #28c840; }
@@ -859,7 +753,7 @@
         .code-content .orange { color: var(--neon-orange); }
         .code-content .pink { color: var(--neon-pink); }
 
-        /* ==================== SKILLS SECTION ==================== */
+        /* ==================== SKILLS ==================== */
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -873,8 +767,6 @@
             padding: 36px 28px;
             backdrop-filter: blur(10px);
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
         }
 
         .skill-card:hover {
@@ -884,8 +776,7 @@
         }
 
         .skill-icon {
-            width: 64px;
-            height: 64px;
+            width: 64px; height: 64px;
             border-radius: 18px;
             display: flex;
             align-items: center;
@@ -895,9 +786,7 @@
             transition: transform 0.4s ease;
         }
 
-        .skill-card:hover .skill-icon {
-            transform: scale(1.15) rotate(8deg);
-        }
+        .skill-card:hover .skill-icon { transform: scale(1.15) rotate(8deg); }
 
         .skill-icon.purple { background: rgba(168, 85, 247, 0.15); }
         .skill-icon.cyan { background: rgba(6, 182, 212, 0.15); }
@@ -918,11 +807,7 @@
             margin-bottom: 20px;
         }
 
-        .skill-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
+        .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
 
         .skill-tag {
             font-size: 11px;
@@ -934,7 +819,7 @@
             border: 1px solid var(--border-color);
         }
 
-        /* ==================== PROJECTS SECTION ==================== */
+        /* ==================== PROJECTS ==================== */
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -957,7 +842,7 @@
         }
 
         .project-image {
-            height: 200px;
+            height: 220px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -966,16 +851,14 @@
         }
 
         .project-image img {
-            max-width: 120px;
-            max-height: 80px;
+            max-width: 180px;
+            max-height: 100px;
             object-fit: contain;
             filter: brightness(1.1);
             transition: transform 0.4s ease;
         }
 
-        .project-card:hover .project-image img {
-            transform: scale(1.1);
-        }
+        .project-card:hover .project-image img { transform: scale(1.1); }
 
         .project-image .text-logo {
             font-family: 'Outfit', sans-serif;
@@ -985,9 +868,7 @@
             text-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
         }
 
-        .project-content {
-            padding: 32px;
-        }
+        .project-content { padding: 32px; }
 
         .project-badge {
             display: inline-block;
@@ -1026,11 +907,7 @@
             margin-bottom: 24px;
         }
 
-        .project-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
+        .project-tags { display: flex; flex-wrap: wrap; gap: 10px; }
 
         .project-tags span {
             font-size: 12px;
@@ -1041,7 +918,6 @@
             border: 1px solid var(--border-color);
         }
 
-        /* Featured Project */
         .featured-project {
             grid-column: span 2;
             display: grid;
@@ -1055,8 +931,8 @@
         }
 
         .featured-project .project-image img {
-            max-width: 180px;
-            max-height: 120px;
+            max-width: 220px;
+            max-height: 140px;
         }
 
         .featured-project .project-content {
@@ -1069,7 +945,7 @@
         .featured-project h3 { font-size: 36px; }
         .featured-project p { font-size: 16px; }
 
-        /* ==================== EXPERIENCE SECTION ==================== */
+        /* ==================== EXPERIENCE ==================== */
         .experience-section {
             background: linear-gradient(180deg, transparent 0%, rgba(168, 85, 247, 0.03) 50%, transparent 100%);
         }
@@ -1085,8 +961,7 @@
             position: absolute;
             left: 50%;
             transform: translateX(-50%);
-            top: 0;
-            bottom: 0;
+            top: 0; bottom: 0;
             width: 2px;
             background: var(--gradient-main);
         }
@@ -1107,8 +982,7 @@
             left: 50%;
             top: 30px;
             transform: translateX(-50%);
-            width: 20px;
-            height: 20px;
+            width: 20px; height: 20px;
             background: var(--bg-primary);
             border: 3px solid var(--neon-purple);
             border-radius: 50%;
@@ -1164,14 +1038,11 @@
             line-height: 1.8;
         }
 
-        /* ==================== CONTACT SECTION ==================== */
+        /* ==================== CONTACT ==================== */
         .contact-section::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
+            top: 0; left: 0; right: 0; bottom: 0;
             background: radial-gradient(ellipse 80% 50% at 50% 100%, rgba(168, 85, 247, 0.15), transparent);
             pointer-events: none;
         }
@@ -1205,11 +1076,7 @@
             line-height: 1.8;
         }
 
-        .contact-links {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
+        .contact-links { display: flex; flex-direction: column; gap: 16px; }
 
         .contact-link {
             display: flex;
@@ -1229,8 +1096,7 @@
         }
 
         .contact-link-icon {
-            width: 56px;
-            height: 56px;
+            width: 56px; height: 56px;
             background: var(--gradient-main);
             border-radius: 16px;
             display: flex;
@@ -1238,12 +1104,7 @@
             justify-content: center;
         }
 
-        .contact-link-icon svg {
-            width: 26px;
-            height: 26px;
-            stroke: white;
-        }
-
+        .contact-link-icon svg { width: 26px; height: 26px; stroke: white; }
         .contact-link-text { flex: 1; }
 
         .contact-link-label {
@@ -1254,10 +1115,7 @@
             margin-bottom: 4px;
         }
 
-        .contact-link-value {
-            font-size: 18px;
-            font-weight: 600;
-        }
+        .contact-link-value { font-size: 18px; font-weight: 600; }
 
         .contact-card {
             background: var(--bg-card);
@@ -1271,10 +1129,8 @@
         .contact-card::before {
             content: '';
             position: absolute;
-            top: -150px;
-            right: -150px;
-            width: 400px;
-            height: 400px;
+            top: -150px; right: -150px;
+            width: 400px; height: 400px;
             background: var(--gradient-main);
             opacity: 0.1;
             border-radius: 50%;
@@ -1312,23 +1168,17 @@
 
         .availability::before {
             content: '';
-            width: 10px;
-            height: 10px;
+            width: 10px; height: 10px;
             background: var(--neon-green);
             border-radius: 50%;
             animation: pulse 2s ease-in-out infinite;
             box-shadow: 0 0 15px var(--neon-green);
         }
 
-        .social-links {
-            display: flex;
-            gap: 12px;
-            margin-top: 32px;
-        }
+        .social-links { display: flex; gap: 12px; margin-top: 32px; }
 
         .social-link {
-            width: 56px;
-            height: 56px;
+            width: 56px; height: 56px;
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid var(--border-color);
             border-radius: 16px;
@@ -1345,27 +1195,16 @@
             box-shadow: 0 20px 40px var(--glow-purple);
         }
 
-        .social-link svg {
-            width: 24px;
-            height: 24px;
-            fill: currentColor;
-        }
+        .social-link svg { width: 24px; height: 24px; fill: currentColor; }
 
-        /* Footer */
         footer {
             padding: 40px 0;
             border-top: 1px solid var(--border-color);
             text-align: center;
         }
 
-        footer p {
-            font-size: 14px;
-            color: var(--text-muted);
-        }
-
-        footer a {
-            color: var(--neon-purple);
-        }
+        footer p { font-size: 14px; color: var(--text-muted); }
+        footer a { color: var(--neon-purple); }
 
         /* ==================== RESPONSIVE ==================== */
         @media (max-width: 1024px) {
@@ -1402,7 +1241,6 @@
     </style>
 </head>
 <body>
-    <!-- Navigation -->
     <nav id="navbar">
         <div class="container">
             <a href="#" class="nav-logo">MA</a>
@@ -1416,21 +1254,12 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section class="hero">
         <div class="hero-grid"></div>
         <div class="particles">
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
+            <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+            <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+            <div class="particle"></div><div class="particle"></div><div class="particle"></div>
             <div class="particle"></div>
         </div>
         <div class="orb orb-1"></div>
@@ -1442,17 +1271,14 @@
                 <span class="dot"></span>
                 Available for opportunities
             </div>
-            
             <h1 class="hero-title">
                 <span class="line-1">Hello, I'm Muhammad Azhar</span>
                 <span class="line-2">Backend Engineer</span>
             </h1>
-            
             <p class="hero-subtitle">
                 I build <strong>scalable backend systems</strong> for AI, Blockchain, and Fintech products. 
                 Crafting high-performance APIs that power products used by <strong>100K+ users</strong> globally.
             </p>
-
             <div class="hero-stats">
                 <div class="hero-stat">
                     <div class="hero-stat-value">4+</div>
@@ -1467,7 +1293,6 @@
                     <div class="hero-stat-label">Projects</div>
                 </div>
             </div>
-
             <div class="hero-buttons">
                 <a href="#contact" class="btn btn-primary">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -1490,16 +1315,19 @@
             <div class="scroll-mouse"></div>
         </div>
 
-        <!-- 30+ Projects Marquee -->
+        <!-- 30+ Projects Marquee with Logos -->
         <div class="hero-projects">
             <p class="hero-projects-title">Projects I've Worked On</p>
             <div class="projects-marquee-wrapper">
                 <div class="projects-marquee">
-                    <!-- Row 1 - First set -->
+                    <!-- Set 1 -->
                     <div class="project-logo-item">
-                        <img src="https://www.chaingpt.org/images/logo.svg" alt="ChainGPT" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-                        <div class="logo-placeholder" style="display:none;background:linear-gradient(135deg,#667eea,#764ba2)">CG</div>
+                        <img src="https://cdn.prod.website-files.com/64354b8ce4872ad8cd1c7b04/648329053d5c25f54cbb89c2_chaingpt-logoLight-Neon-2.svg" alt="ChainGPT">
                         <span>ChainGPT</span>
+                    </div>
+                    <div class="project-logo-item">
+                        <img src="https://pad.chaingpt.org/_next/static/media/logo.4b41af9e.svg" alt="ChainGPT Pad">
+                        <span>ChainGPT Pad</span>
                     </div>
                     <div class="project-logo-item">
                         <div class="logo-placeholder" style="background:linear-gradient(135deg,#f093fb,#f5576c)">D</div>
@@ -1518,55 +1346,53 @@
                         <span>Inscanner</span>
                     </div>
                     <div class="project-logo-item">
-                        <div class="logo-placeholder" style="background:linear-gradient(135deg,#00c6fb,#005bea)">CP</div>
-                        <span>ChainGPT Pad</span>
-                    </div>
-                    <div class="project-logo-item">
                         <div class="logo-placeholder" style="background:linear-gradient(135deg,#fa709a,#fee140)">FS</div>
                         <span>FusionSuite</span>
                     </div>
                     <div class="project-logo-item">
-                        <img src="https://www.ubl.com.pk/images/logo.png" alt="UBL" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-                        <div class="logo-placeholder" style="display:none;background:linear-gradient(135deg,#f857a6,#ff5858)">UBL</div>
+                        <div class="logo-placeholder" style="background:linear-gradient(135deg,#00416a,#e4e5e6)">UBL</div>
                         <span>UBL Banking</span>
                     </div>
                     <div class="project-logo-item">
                         <div class="logo-placeholder" style="background:linear-gradient(135deg,#667eea,#764ba2)">NFT</div>
-                        <span>NFT Marketplace</span>
+                        <span>NFT Generator</span>
                     </div>
                     <div class="project-logo-item">
-                        <div class="logo-placeholder" style="background:linear-gradient(135deg,#f093fb,#f5576c)">TA</div>
-                        <span>Trading Assistant</span>
+                        <div class="logo-placeholder" style="background:linear-gradient(135deg,#f5576c,#f093fb)">TA</div>
+                        <span>Trading Bot</span>
                     </div>
                     <div class="project-logo-item">
-                        <div class="logo-placeholder" style="background:linear-gradient(135deg,#4facfe,#00f2fe)">SC</div>
+                        <div class="logo-placeholder" style="background:linear-gradient(135deg,#00f2fe,#4facfe)">SC</div>
                         <span>Smart Contracts</span>
                     </div>
                     <div class="project-logo-item">
-                        <div class="logo-placeholder" style="background:linear-gradient(135deg,#11998e,#38ef7d)">DeFi</div>
+                        <div class="logo-placeholder" style="background:linear-gradient(135deg,#38ef7d,#11998e)">DF</div>
                         <span>DeFi Platform</span>
                     </div>
                     <div class="project-logo-item">
-                        <div class="logo-placeholder" style="background:linear-gradient(135deg,#8e2de2,#4a00e0)">WL</div>
+                        <div class="logo-placeholder" style="background:linear-gradient(135deg,#4a00e0,#8e2de2)">WL</div>
                         <span>Wallet System</span>
                     </div>
                     <div class="project-logo-item">
-                        <div class="logo-placeholder" style="background:linear-gradient(135deg,#00c6fb,#005bea)">KYC</div>
+                        <div class="logo-placeholder" style="background:linear-gradient(135deg,#fee140,#fa709a)">KYC</div>
                         <span>KYC System</span>
                     </div>
                     <div class="project-logo-item">
-                        <div class="logo-placeholder" style="background:linear-gradient(135deg,#fa709a,#fee140)">PA</div>
+                        <div class="logo-placeholder" style="background:linear-gradient(135deg,#e4e5e6,#00416a)">PG</div>
                         <span>Payment Gateway</span>
                     </div>
                     <div class="project-logo-item">
-                        <div class="logo-placeholder" style="background:linear-gradient(135deg,#f857a6,#ff5858)">EC</div>
+                        <div class="logo-placeholder" style="background:linear-gradient(135deg,#764ba2,#667eea)">EC</div>
                         <span>E-Commerce</span>
                     </div>
-                    <!-- Row 1 - Duplicate for seamless loop -->
+                    <!-- Set 2 (Duplicate) -->
                     <div class="project-logo-item">
-                        <img src="https://www.chaingpt.org/images/logo.svg" alt="ChainGPT" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-                        <div class="logo-placeholder" style="display:none;background:linear-gradient(135deg,#667eea,#764ba2)">CG</div>
+                        <img src="https://cdn.prod.website-files.com/64354b8ce4872ad8cd1c7b04/648329053d5c25f54cbb89c2_chaingpt-logoLight-Neon-2.svg" alt="ChainGPT">
                         <span>ChainGPT</span>
+                    </div>
+                    <div class="project-logo-item">
+                        <img src="https://pad.chaingpt.org/_next/static/media/logo.4b41af9e.svg" alt="ChainGPT Pad">
+                        <span>ChainGPT Pad</span>
                     </div>
                     <div class="project-logo-item">
                         <div class="logo-placeholder" style="background:linear-gradient(135deg,#f093fb,#f5576c)">D</div>
@@ -1585,48 +1411,43 @@
                         <span>Inscanner</span>
                     </div>
                     <div class="project-logo-item">
-                        <div class="logo-placeholder" style="background:linear-gradient(135deg,#00c6fb,#005bea)">CP</div>
-                        <span>ChainGPT Pad</span>
-                    </div>
-                    <div class="project-logo-item">
                         <div class="logo-placeholder" style="background:linear-gradient(135deg,#fa709a,#fee140)">FS</div>
                         <span>FusionSuite</span>
                     </div>
                     <div class="project-logo-item">
-                        <img src="https://www.ubl.com.pk/images/logo.png" alt="UBL" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-                        <div class="logo-placeholder" style="display:none;background:linear-gradient(135deg,#f857a6,#ff5858)">UBL</div>
+                        <div class="logo-placeholder" style="background:linear-gradient(135deg,#00416a,#e4e5e6)">UBL</div>
                         <span>UBL Banking</span>
                     </div>
                     <div class="project-logo-item">
                         <div class="logo-placeholder" style="background:linear-gradient(135deg,#667eea,#764ba2)">NFT</div>
-                        <span>NFT Marketplace</span>
+                        <span>NFT Generator</span>
                     </div>
                     <div class="project-logo-item">
-                        <div class="logo-placeholder" style="background:linear-gradient(135deg,#f093fb,#f5576c)">TA</div>
-                        <span>Trading Assistant</span>
+                        <div class="logo-placeholder" style="background:linear-gradient(135deg,#f5576c,#f093fb)">TA</div>
+                        <span>Trading Bot</span>
                     </div>
                     <div class="project-logo-item">
-                        <div class="logo-placeholder" style="background:linear-gradient(135deg,#4facfe,#00f2fe)">SC</div>
+                        <div class="logo-placeholder" style="background:linear-gradient(135deg,#00f2fe,#4facfe)">SC</div>
                         <span>Smart Contracts</span>
                     </div>
                     <div class="project-logo-item">
-                        <div class="logo-placeholder" style="background:linear-gradient(135deg,#11998e,#38ef7d)">DeFi</div>
+                        <div class="logo-placeholder" style="background:linear-gradient(135deg,#38ef7d,#11998e)">DF</div>
                         <span>DeFi Platform</span>
                     </div>
                     <div class="project-logo-item">
-                        <div class="logo-placeholder" style="background:linear-gradient(135deg,#8e2de2,#4a00e0)">WL</div>
+                        <div class="logo-placeholder" style="background:linear-gradient(135deg,#4a00e0,#8e2de2)">WL</div>
                         <span>Wallet System</span>
                     </div>
                     <div class="project-logo-item">
-                        <div class="logo-placeholder" style="background:linear-gradient(135deg,#00c6fb,#005bea)">KYC</div>
+                        <div class="logo-placeholder" style="background:linear-gradient(135deg,#fee140,#fa709a)">KYC</div>
                         <span>KYC System</span>
                     </div>
                     <div class="project-logo-item">
-                        <div class="logo-placeholder" style="background:linear-gradient(135deg,#fa709a,#fee140)">PA</div>
+                        <div class="logo-placeholder" style="background:linear-gradient(135deg,#e4e5e6,#00416a)">PG</div>
                         <span>Payment Gateway</span>
                     </div>
                     <div class="project-logo-item">
-                        <div class="logo-placeholder" style="background:linear-gradient(135deg,#f857a6,#ff5858)">EC</div>
+                        <div class="logo-placeholder" style="background:linear-gradient(135deg,#764ba2,#667eea)">EC</div>
                         <span>E-Commerce</span>
                     </div>
                 </div>
@@ -1634,7 +1455,6 @@
         </div>
     </section>
 
-    <!-- About Section -->
     <section id="about">
         <div class="container">
             <div class="section-header">
@@ -1642,7 +1462,6 @@
                 <h2 class="section-title">Building <span>Systems</span> That Scale</h2>
                 <p class="section-subtitle">I transform complex problems into elegant, scalable solutions.</p>
             </div>
-
             <div class="about-grid">
                 <div class="about-card">
                     <div class="about-card-icon">🚀</div>
@@ -1665,7 +1484,6 @@
                     <div class="about-card-label">Team Members Led</div>
                 </div>
             </div>
-
             <div class="about-content">
                 <div class="about-text">
                     <h3>Passionate about building robust systems</h3>
@@ -1702,7 +1520,6 @@
   <span class="green">role</span>: <span class="orange">"Senior Backend Engineer"</span>,
   <span class="green">location</span>: <span class="orange">"Islamabad, Pakistan"</span>,
   <span class="green">skills</span>: [<span class="orange">"Node.js"</span>, <span class="orange">"NestJS"</span>, <span class="orange">"AWS"</span>],
-  <span class="green">passion</span>: <span class="orange">"Building scalable systems"</span>,
   <span class="green">available</span>: <span class="pink">true</span>,
   
   <span class="cyan">buildSomethingGreat</span>() {
@@ -1715,7 +1532,6 @@
         </div>
     </section>
 
-    <!-- Skills Section -->
     <section id="skills">
         <div class="container">
             <div class="section-header">
@@ -1723,17 +1539,13 @@
                 <h2 class="section-title">My <span>Tech Stack</span></h2>
                 <p class="section-subtitle">Technologies I use to bring ideas to life.</p>
             </div>
-
             <div class="skills-grid">
                 <div class="skill-card">
                     <div class="skill-icon purple">⚡</div>
                     <h3>Backend Development</h3>
                     <p>Building robust server-side applications with clean architecture.</p>
                     <div class="skill-tags">
-                        <span>Node.js</span>
-                        <span>NestJS</span>
-                        <span>Express</span>
-                        <span>TypeScript</span>
+                        <span>Node.js</span><span>NestJS</span><span>Express</span><span>TypeScript</span>
                     </div>
                 </div>
                 <div class="skill-card">
@@ -1741,10 +1553,7 @@
                     <h3>Databases</h3>
                     <p>Designing efficient data models and optimizing queries.</p>
                     <div class="skill-tags">
-                        <span>PostgreSQL</span>
-                        <span>MongoDB</span>
-                        <span>Redis</span>
-                        <span>Elasticsearch</span>
+                        <span>PostgreSQL</span><span>MongoDB</span><span>Redis</span><span>Elasticsearch</span>
                     </div>
                 </div>
                 <div class="skill-card">
@@ -1752,10 +1561,7 @@
                     <h3>Cloud & DevOps</h3>
                     <p>Deploying and managing scalable infrastructure.</p>
                     <div class="skill-tags">
-                        <span>AWS</span>
-                        <span>Docker</span>
-                        <span>Kubernetes</span>
-                        <span>CI/CD</span>
+                        <span>AWS</span><span>Docker</span><span>Kubernetes</span><span>CI/CD</span>
                     </div>
                 </div>
                 <div class="skill-card">
@@ -1763,17 +1569,13 @@
                     <h3>Blockchain & AI</h3>
                     <p>Integrating cutting-edge technologies.</p>
                     <div class="skill-tags">
-                        <span>Web3.js</span>
-                        <span>Ethers.js</span>
-                        <span>LLM APIs</span>
-                        <span>OCR</span>
+                        <span>Web3.js</span><span>Ethers.js</span><span>LLM APIs</span><span>OCR</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Projects Section -->
     <section id="projects">
         <div class="container">
             <div class="section-header">
@@ -1781,22 +1583,18 @@
                 <h2 class="section-title">Featured <span>Projects</span></h2>
                 <p class="section-subtitle">A selection of projects that showcase my skills.</p>
             </div>
-
             <div class="projects-grid">
-                <!-- Featured: ChainGPT -->
+                <!-- Featured: ChainGPT with actual logo -->
                 <div class="project-card featured-project">
-                    <div class="project-image" style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);">
-                        <img src="https://www.chaingpt.org/images/logo.svg" alt="ChainGPT" onerror="this.outerHTML='<span class=text-logo>ChainGPT</span>'">
+                    <div class="project-image" style="background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 100%);">
+                        <img src="https://cdn.prod.website-files.com/64354b8ce4872ad8cd1c7b04/648329053d5c25f54cbb89c2_chaingpt-logoLight-Neon-2.svg" alt="ChainGPT">
                     </div>
                     <div class="project-content">
                         <span class="project-badge ai">AI & Web3</span>
                         <h3><a href="https://chaingpt.org" target="_blank">ChainGPT Platform</a></h3>
                         <p>Backend architecture for AI-powered Web3 platform. Smart contract generators, NFT tools, AI chatbots. Optimized response times by 60%. Serves 100K+ users globally.</p>
                         <div class="project-tags">
-                            <span>Node.js</span>
-                            <span>NestJS</span>
-                            <span>PostgreSQL</span>
-                            <span>Web3.js</span>
+                            <span>Node.js</span><span>NestJS</span><span>PostgreSQL</span><span>Web3.js</span>
                         </div>
                     </div>
                 </div>
@@ -1811,9 +1609,7 @@
                         <h3>Doazo</h3>
                         <p>Enterprise AI assistant with LLM orchestration, multi-tenant architecture. Reduced inference costs by 40%.</p>
                         <div class="project-tags">
-                            <span>NestJS</span>
-                            <span>PostgreSQL</span>
-                            <span>Redis</span>
+                            <span>NestJS</span><span>PostgreSQL</span><span>Redis</span>
                         </div>
                     </div>
                 </div>
@@ -1828,9 +1624,7 @@
                         <h3>PointChecker</h3>
                         <p>AI-powered document verification with OCR processing. Handles thousands of scans daily.</p>
                         <div class="project-tags">
-                            <span>NestJS</span>
-                            <span>OCR</span>
-                            <span>AI/ML APIs</span>
+                            <span>NestJS</span><span>OCR</span><span>AI/ML APIs</span>
                         </div>
                     </div>
                 </div>
@@ -1845,9 +1639,7 @@
                         <h3>Safer</h3>
                         <p>Risk assessment platform using ML models for real-time threat analysis.</p>
                         <div class="project-tags">
-                            <span>Node.js</span>
-                            <span>PostgreSQL</span>
-                            <span>ML APIs</span>
+                            <span>Node.js</span><span>PostgreSQL</span><span>ML APIs</span>
                         </div>
                     </div>
                 </div>
@@ -1862,25 +1654,22 @@
                         <h3>Inscanner</h3>
                         <p>Intelligent document scanner with AI text extraction and image processing.</p>
                         <div class="project-tags">
-                            <span>NestJS</span>
-                            <span>Image Processing</span>
+                            <span>NestJS</span><span>Image Processing</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- ChainGPT Pad -->
+                <!-- ChainGPT Pad with actual logo -->
                 <div class="project-card">
-                    <div class="project-image" style="background: linear-gradient(135deg, #00c6fb 0%, #005bea 100%);">
-                        <span class="text-logo">CGPad</span>
+                    <div class="project-image" style="background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 100%);">
+                        <img src="https://pad.chaingpt.org/_next/static/media/logo.4b41af9e.svg" alt="ChainGPT Pad">
                     </div>
                     <div class="project-content">
                         <span class="project-badge blockchain">Blockchain</span>
                         <h3><a href="https://pad.chaingpt.org" target="_blank">ChainGPT Pad</a></h3>
                         <p>Decentralized launchpad with KYC verification and on-chain allocation tracking.</p>
                         <div class="project-tags">
-                            <span>Express.js</span>
-                            <span>PostgreSQL</span>
-                            <span>Blockchain</span>
+                            <span>Express.js</span><span>PostgreSQL</span><span>Blockchain</span>
                         </div>
                     </div>
                 </div>
@@ -1895,16 +1684,14 @@
                         <h3><a href="https://fusionsuite.net" target="_blank">FusionSuite</a></h3>
                         <p>QA management platform with test case management and bug tracking.</p>
                         <div class="project-tags">
-                            <span>NestJS</span>
-                            <span>PostgreSQL</span>
-                            <span>Redis</span>
+                            <span>NestJS</span><span>PostgreSQL</span><span>Redis</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- UBL -->
                 <div class="project-card">
-                    <div class="project-image" style="background: linear-gradient(135deg, #f857a6 0%, #ff5858 100%);">
+                    <div class="project-image" style="background: linear-gradient(135deg, #00416a 0%, #1a1a2e 100%);">
                         <span class="text-logo">UBL</span>
                     </div>
                     <div class="project-content">
@@ -1912,9 +1699,7 @@
                         <h3>United Bank Limited</h3>
                         <p>Secure banking APIs processing millions in daily transactions.</p>
                         <div class="project-tags">
-                            <span>Node.js</span>
-                            <span>PostgreSQL</span>
-                            <span>Security</span>
+                            <span>Node.js</span><span>PostgreSQL</span><span>Security</span>
                         </div>
                     </div>
                 </div>
@@ -1922,7 +1707,6 @@
         </div>
     </section>
 
-    <!-- Experience Section -->
     <section id="experience" class="experience-section">
         <div class="container">
             <div class="section-header">
@@ -1930,7 +1714,6 @@
                 <h2 class="section-title">Work <span>Experience</span></h2>
                 <p class="section-subtitle">My professional journey.</p>
             </div>
-
             <div class="timeline">
                 <div class="timeline-item">
                     <div class="timeline-date"><span>Jul 2024 — Present</span></div>
@@ -1968,7 +1751,6 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
     <section id="contact" class="contact-section">
         <div class="container">
             <div class="section-header">
@@ -1976,7 +1758,6 @@
                 <h2 class="section-title">Let's <span>Connect</span></h2>
                 <p class="section-subtitle">Have a project in mind? Let's talk.</p>
             </div>
-
             <div class="contact-grid">
                 <div class="contact-info">
                     <h3>Let's work <span>together</span></h3>
@@ -2007,7 +1788,6 @@
                         </a>
                     </div>
                 </div>
-
                 <div class="contact-card">
                     <h4>Ready for new challenges</h4>
                     <p>I'm looking for senior backend roles where I can build scalable systems and lead engineering teams.</p>
@@ -2035,13 +1815,9 @@
     </footer>
 
     <script>
-        // Navbar scroll
         const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            navbar.classList.toggle('scrolled', window.scrollY > 50);
-        });
+        window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 50));
 
-        // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -2049,7 +1825,6 @@
             });
         });
 
-        // Scroll animations
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {

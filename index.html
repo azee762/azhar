@@ -6,16 +6,23 @@
     <title>Muhammad Azhar — Senior Backend Engineer</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #fafaf9;
-            --text: #1c1917;
-            --text-muted: #78716c;
-            --accent: #0c0a09;
-            --border: #e7e5e4;
-            --card-bg: #ffffff;
-            --tag-bg: #f5f5f4;
+            --bg-dark: #0a0a0f;
+            --bg-card: #12121a;
+            --bg-card-hover: #1a1a25;
+            --text: #ffffff;
+            --text-muted: #8a8a9a;
+            --accent-primary: #6366f1;
+            --accent-secondary: #8b5cf6;
+            --accent-tertiary: #06b6d4;
+            --accent-warm: #f59e0b;
+            --gradient-1: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #06b6d4 100%);
+            --gradient-2: linear-gradient(135deg, #06b6d4 0%, #8b5cf6 100%);
+            --gradient-3: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);
+            --border: rgba(255, 255, 255, 0.08);
+            --glow: rgba(99, 102, 241, 0.4);
         }
 
         * {
@@ -29,16 +36,88 @@
         }
 
         body {
-            font-family: 'DM Sans', -apple-system, sans-serif;
-            background: var(--bg);
+            font-family: 'Space Grotesk', -apple-system, sans-serif;
+            background: var(--bg-dark);
             color: var(--text);
             line-height: 1.6;
             font-size: 16px;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background */
+        .bg-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background: 
+                radial-gradient(ellipse 80% 50% at 50% -20%, rgba(99, 102, 241, 0.15), transparent),
+                radial-gradient(ellipse 60% 40% at 100% 50%, rgba(139, 92, 246, 0.1), transparent),
+                radial-gradient(ellipse 60% 40% at 0% 80%, rgba(6, 182, 212, 0.1), transparent);
+        }
+
+        .grid-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 60px 60px;
+            mask-image: radial-gradient(ellipse 80% 60% at 50% 30%, black, transparent);
+        }
+
+        /* Floating orbs */
+        .orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: -1;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .orb-1 {
+            width: 600px;
+            height: 600px;
+            background: rgba(99, 102, 241, 0.15);
+            top: -200px;
+            right: -200px;
+            animation-delay: 0s;
+        }
+
+        .orb-2 {
+            width: 500px;
+            height: 500px;
+            background: rgba(139, 92, 246, 0.12);
+            bottom: -150px;
+            left: -150px;
+            animation-delay: -7s;
+        }
+
+        .orb-3 {
+            width: 400px;
+            height: 400px;
+            background: rgba(6, 182, 212, 0.1);
+            top: 50%;
+            left: 50%;
+            animation-delay: -14s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(30px, -30px) scale(1.05); }
+            50% { transform: translate(-20px, 20px) scale(0.95); }
+            75% { transform: translate(20px, 30px) scale(1.02); }
         }
 
         ::selection {
-            background: var(--accent);
-            color: var(--bg);
+            background: var(--accent-primary);
+            color: var(--text);
         }
 
         a {
@@ -46,72 +125,177 @@
             text-decoration: none;
         }
 
-        /* Layout */
+        /* Container */
         .container {
-            max-width: 720px;
+            max-width: 1100px;
             margin: 0 auto;
             padding: 0 24px;
         }
 
-        /* Header */
+        /* Header / Hero */
         header {
-            padding: 80px 0 60px;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            gap: 40px;
-        }
-
-        .header-text h1 {
-            font-family: 'Instrument Serif', Georgia, serif;
-            font-size: 42px;
-            font-weight: 400;
-            letter-spacing: -0.5px;
-            margin-bottom: 8px;
-        }
-
-        .header-text .title {
-            font-size: 15px;
-            color: var(--text-muted);
-            margin-bottom: 24px;
-        }
-
-        .header-text .location {
-            font-size: 14px;
-            color: var(--text-muted);
+            min-height: 100vh;
             display: flex;
             align-items: center;
-            gap: 6px;
+            position: relative;
+            padding: 100px 0;
         }
 
-        .header-links {
-            display: flex;
-            gap: 20px;
-            flex-shrink: 0;
+        .hero-content {
+            width: 100%;
         }
 
-        .header-links a {
-            font-size: 14px;
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 13px;
+            color: var(--accent-primary);
+            margin-bottom: 32px;
+            animation: fadeUp 0.6s ease forwards;
+        }
+
+        .hero-badge::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--accent-primary);
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
+        }
+
+        .hero-title {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(48px, 10vw, 90px);
+            font-weight: 800;
+            line-height: 1.05;
+            margin-bottom: 24px;
+            animation: fadeUp 0.6s ease forwards;
+            animation-delay: 0.1s;
+            opacity: 0;
+        }
+
+        .hero-title .gradient-text {
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 20px;
             color: var(--text-muted);
-            transition: color 0.2s;
+            max-width: 550px;
+            line-height: 1.7;
+            margin-bottom: 40px;
+            animation: fadeUp 0.6s ease forwards;
+            animation-delay: 0.2s;
+            opacity: 0;
         }
 
-        .header-links a:hover {
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            animation: fadeUp 0.6s ease forwards;
+            animation-delay: 0.3s;
+            opacity: 0;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            border-radius: 12px;
+            font-size: 15px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--gradient-1);
+            color: white;
+            box-shadow: 0 4px 20px var(--glow);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px var(--glow);
+        }
+
+        .btn-secondary {
+            background: var(--bg-card);
             color: var(--text);
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--accent-primary);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-muted);
+            font-size: 12px;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
         }
 
         /* Nav */
         nav {
-            padding: 20px 0;
-            border-bottom: 1px solid var(--border);
-            position: sticky;
+            position: fixed;
             top: 0;
-            background: var(--bg);
-            z-index: 100;
+            left: 0;
+            right: 0;
+            padding: 20px 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            background: rgba(10, 10, 15, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-family: 'Syne', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         nav ul {
@@ -124,105 +308,309 @@
             font-size: 14px;
             color: var(--text-muted);
             transition: color 0.2s;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-1);
+            transition: width 0.3s ease;
         }
 
         nav a:hover {
             color: var(--text);
         }
 
-        /* Sections */
-        section {
-            padding: 60px 0;
-            border-bottom: 1px solid var(--border);
+        nav a:hover::after {
+            width: 100%;
         }
 
-        section:last-of-type {
-            border-bottom: none;
+        /* Sections */
+        section {
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-label {
+            display: inline-block;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--accent-primary);
+            margin-bottom: 16px;
         }
 
         .section-title {
-            font-family: 'Instrument Serif', Georgia, serif;
-            font-size: 13px;
-            font-weight: 400;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: var(--text-muted);
-            margin-bottom: 32px;
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(32px, 5vw, 48px);
+            font-weight: 700;
         }
 
         /* About */
-        .about-content p {
-            font-size: 17px;
-            line-height: 1.75;
-            margin-bottom: 20px;
-            color: var(--text);
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
         }
 
-        .about-content p:last-child {
-            margin-bottom: 0;
+        .about-image {
+            position: relative;
+        }
+
+        .about-image-wrapper {
+            position: relative;
+            border-radius: 24px;
+            overflow: hidden;
+            aspect-ratio: 1;
+            background: var(--gradient-1);
+            padding: 3px;
+        }
+
+        .about-image-inner {
+            width: 100%;
+            height: 100%;
+            border-radius: 22px;
+            background: var(--bg-card);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .about-image-inner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .about-decoration {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border: 2px dashed var(--accent-primary);
+            border-radius: 24px;
+            top: -20px;
+            right: -20px;
+            z-index: -1;
+            opacity: 0.3;
+        }
+
+        .about-content h3 {
+            font-family: 'Syne', sans-serif;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .about-content p {
+            color: var(--text-muted);
+            margin-bottom: 16px;
+            line-height: 1.8;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+        .stat-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            border-color: var(--accent-primary);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 40px rgba(99, 102, 241, 0.15);
+        }
+
+        .stat-value {
+            font-family: 'Syne', sans-serif;
+            font-size: 36px;
+            font-weight: 700;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-top: 4px;
         }
 
         /* Skills */
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 40px;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
         }
 
-        .skill-group h3 {
-            font-size: 14px;
+        .skill-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 32px 24px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-1);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .skill-card:hover {
+            border-color: var(--accent-primary);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .skill-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .skill-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .skill-icon.backend { background: rgba(99, 102, 241, 0.15); }
+        .skill-icon.database { background: rgba(6, 182, 212, 0.15); }
+        .skill-icon.cloud { background: rgba(245, 158, 11, 0.15); }
+        .skill-icon.blockchain { background: rgba(139, 92, 246, 0.15); }
+
+        .skill-card h3 {
+            font-size: 18px;
             font-weight: 600;
             margin-bottom: 12px;
         }
 
-        .skill-group p {
+        .skill-card p {
             font-size: 14px;
             color: var(--text-muted);
             line-height: 1.7;
         }
 
         /* Projects */
-        .project {
-            margin-bottom: 48px;
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
         }
 
-        .project:last-child {
-            margin-bottom: 0;
+        .project-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 32px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--gradient-1);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 0;
+        }
+
+        .project-card:hover {
+            border-color: transparent;
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+        }
+
+        .project-card:hover::before {
+            opacity: 0.05;
+        }
+
+        .project-card > * {
+            position: relative;
+            z-index: 1;
         }
 
         .project-header {
             display: flex;
             justify-content: space-between;
-            align-items: baseline;
-            margin-bottom: 8px;
-        }
-
-        .project h3 {
-            font-size: 18px;
-            font-weight: 500;
-        }
-
-        .project h3 a {
-            border-bottom: 1px solid var(--border);
-            transition: border-color 0.2s;
-        }
-
-        .project h3 a:hover {
-            border-color: var(--text);
+            align-items: flex-start;
+            margin-bottom: 16px;
         }
 
         .project-type {
-            font-size: 12px;
-            color: var(--text-muted);
+            font-size: 11px;
+            font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
+            padding: 6px 12px;
+            border-radius: 6px;
+            background: rgba(99, 102, 241, 0.15);
+            color: var(--accent-primary);
         }
 
-        .project p {
-            font-size: 15px;
+        .project-type.ai { background: rgba(139, 92, 246, 0.15); color: var(--accent-secondary); }
+        .project-type.blockchain { background: rgba(6, 182, 212, 0.15); color: var(--accent-tertiary); }
+        .project-type.fintech { background: rgba(245, 158, 11, 0.15); color: var(--accent-warm); }
+
+        .project-card h3 {
+            font-family: 'Syne', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .project-card h3 a {
+            transition: color 0.2s;
+        }
+
+        .project-card h3 a:hover {
+            color: var(--accent-primary);
+        }
+
+        .project-card p {
+            font-size: 14px;
             color: var(--text-muted);
             line-height: 1.7;
-            margin-bottom: 12px;
+            margin-bottom: 20px;
         }
 
         .project-tags {
@@ -234,183 +622,324 @@
         .project-tags span {
             font-size: 12px;
             color: var(--text-muted);
-            background: var(--tag-bg);
-            padding: 4px 10px;
-            border-radius: 4px;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 6px 12px;
+            border-radius: 6px;
+            border: 1px solid var(--border);
+        }
+
+        /* Featured Project */
+        .featured-project {
+            grid-column: span 2;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+            background: linear-gradient(135deg, var(--bg-card) 0%, rgba(99, 102, 241, 0.05) 100%);
+        }
+
+        .featured-project .project-content {
+            padding-right: 20px;
+        }
+
+        .featured-project .project-visual {
+            height: 300px;
+            background: var(--gradient-1);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Syne', sans-serif;
+            font-size: 48px;
+            font-weight: 800;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .featured-project .project-visual::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
         }
 
         /* Experience */
-        .experience-item {
-            margin-bottom: 40px;
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
         }
 
-        .experience-item:last-child {
-            margin-bottom: 0;
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--gradient-1);
         }
 
-        .experience-header {
+        .timeline-item {
+            position: relative;
+            padding-left: 40px;
+            padding-bottom: 48px;
+        }
+
+        .timeline-item:last-child {
+            padding-bottom: 0;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -7px;
+            top: 0;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--bg-dark);
+            border: 3px solid var(--accent-primary);
+            box-shadow: 0 0 20px var(--glow);
+        }
+
+        .timeline-content {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 28px;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            border-color: var(--accent-primary);
+            box-shadow: 0 10px 40px rgba(99, 102, 241, 0.1);
+        }
+
+        .timeline-header {
             display: flex;
             justify-content: space-between;
-            align-items: baseline;
-            margin-bottom: 4px;
+            align-items: flex-start;
+            margin-bottom: 8px;
+            flex-wrap: wrap;
+            gap: 12px;
         }
 
-        .experience-item h3 {
-            font-size: 16px;
-            font-weight: 500;
+        .timeline-content h3 {
+            font-size: 18px;
+            font-weight: 600;
         }
 
-        .experience-date {
+        .timeline-date {
             font-size: 13px;
-            color: var(--text-muted);
+            color: var(--accent-primary);
+            background: rgba(99, 102, 241, 0.1);
+            padding: 4px 12px;
+            border-radius: 20px;
         }
 
-        .experience-company {
+        .timeline-company {
             font-size: 14px;
             color: var(--text-muted);
             margin-bottom: 12px;
         }
 
-        .experience-item p {
+        .timeline-content p {
             font-size: 14px;
             color: var(--text-muted);
             line-height: 1.7;
         }
 
-        /* Metrics */
-        .metrics {
+        /* Contact */
+        .contact-section {
+            background: linear-gradient(180deg, transparent 0%, rgba(99, 102, 241, 0.05) 100%);
+        }
+
+        .contact-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-            padding: 32px 0;
-            border-top: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
-            margin: 40px 0;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
         }
 
-        .metric {
-            text-align: center;
-        }
-
-        .metric-value {
-            font-family: 'Instrument Serif', Georgia, serif;
+        .contact-info h3 {
+            font-family: 'Syne', sans-serif;
             font-size: 36px;
-            font-weight: 400;
-            margin-bottom: 4px;
+            font-weight: 700;
+            margin-bottom: 20px;
         }
 
-        .metric-label {
+        .contact-info h3 span {
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .contact-info p {
+            color: var(--text-muted);
+            margin-bottom: 32px;
+            line-height: 1.8;
+        }
+
+        .contact-links {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 16px 20px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-link:hover {
+            border-color: var(--accent-primary);
+            transform: translateX(8px);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.15);
+        }
+
+        .contact-link-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            background: var(--gradient-1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .contact-link-text {
+            flex: 1;
+        }
+
+        .contact-link-label {
             font-size: 12px;
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 1px;
         }
 
-        /* Contact */
-        .contact-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
+        .contact-link-value {
+            font-size: 15px;
+            font-weight: 500;
         }
 
-        .contact-info p {
-            font-size: 15px;
+        .contact-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-card::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 300px;
+            height: 300px;
+            background: var(--gradient-1);
+            opacity: 0.1;
+            border-radius: 50%;
+            filter: blur(60px);
+        }
+
+        .contact-card h4 {
+            font-family: 'Syne', sans-serif;
+            font-size: 22px;
+            margin-bottom: 16px;
+        }
+
+        .contact-card p {
             color: var(--text-muted);
+            font-size: 14px;
             margin-bottom: 24px;
-            max-width: 400px;
+            line-height: 1.7;
         }
 
-        .contact-details {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .contact-details a {
-            font-size: 15px;
-            color: var(--text);
-            display: flex;
+        .availability-badge {
+            display: inline-flex;
             align-items: center;
             gap: 8px;
-            transition: opacity 0.2s;
-        }
-
-        .contact-details a:hover {
-            opacity: 0.7;
-        }
-
-        .contact-links {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            text-align: right;
-        }
-
-        .contact-links a {
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            padding: 10px 18px;
+            border-radius: 50px;
             font-size: 14px;
-            color: var(--text-muted);
-            transition: color 0.2s;
+            color: #22c55e;
         }
 
-        .contact-links a:hover {
-            color: var(--text);
+        .availability-badge::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: #22c55e;
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 12px;
+            margin-top: 32px;
+        }
+
+        .social-link {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--gradient-1);
+            border-color: transparent;
+            transform: translateY(-4px);
+        }
+
+        .social-link svg {
+            width: 20px;
+            height: 20px;
         }
 
         /* Footer */
         footer {
             padding: 40px 0;
+            border-top: 1px solid var(--border);
             text-align: center;
         }
 
         footer p {
-            font-size: 13px;
+            font-size: 14px;
             color: var(--text-muted);
         }
 
-        /* Responsive */
-        @media (max-width: 640px) {
-            header {
-                padding: 60px 0 40px;
-            }
-
-            .header-content {
-                flex-direction: column;
-                gap: 24px;
-            }
-
-            .header-text h1 {
-                font-size: 32px;
-            }
-
-            .skills-grid {
-                grid-template-columns: 1fr;
-                gap: 32px;
-            }
-
-            .metrics {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-
-            .contact-content {
-                flex-direction: column;
-                gap: 32px;
-            }
-
-            .contact-links {
-                text-align: left;
-            }
-
-            nav ul {
-                gap: 20px;
-            }
+        footer a {
+            color: var(--accent-primary);
         }
 
         /* Animations */
         @keyframes fadeUp {
             from {
                 opacity: 0;
-                transform: translateY(20px);
+                transform: translateY(30px);
             }
             to {
                 opacity: 1;
@@ -418,267 +947,470 @@
             }
         }
 
-        .animate {
-            animation: fadeUp 0.6s ease forwards;
-            opacity: 0;
+        /* Responsive */
+        @media (max-width: 900px) {
+            .about-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .featured-project {
+                grid-column: span 1;
+                grid-template-columns: 1fr;
+            }
+
+            .featured-project .project-visual {
+                height: 200px;
+                font-size: 32px;
+            }
+
+            nav ul {
+                gap: 20px;
+            }
         }
 
-        .delay-1 { animation-delay: 0.1s; }
-        .delay-2 { animation-delay: 0.2s; }
-        .delay-3 { animation-delay: 0.3s; }
-        .delay-4 { animation-delay: 0.4s; }
+        @media (max-width: 600px) {
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            nav ul {
+                display: none;
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <div class="header-content">
-                <div class="header-text">
-                    <h1 class="animate">Muhammad Azhar</h1>
-                    <p class="title animate delay-1">Senior Backend Engineer · Node.js · AI & Web3</p>
-                    <p class="location animate delay-2">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                            <circle cx="12" cy="10" r="3"/>
-                        </svg>
-                        Islamabad, Pakistan
-                    </p>
-                </div>
-                <div class="header-links animate delay-3">
-                    <a href="mailto:mazee762@gmail.com">Email</a>
-                    <a href="https://linkedin.com/in/muhammad-azhar-5a474718b/" target="_blank">LinkedIn</a>
-                    <a href="https://github.com/mazee762" target="_blank">GitHub</a>
-                </div>
-            </div>
-        </header>
+    <div class="bg-pattern"></div>
+    <div class="grid-overlay"></div>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
 
-        <nav>
+    <nav id="navbar">
+        <div class="container">
+            <a href="#" class="nav-logo">MA</a>
             <ul>
                 <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#experience">Experience</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
-        </nav>
+        </div>
+    </nav>
 
-        <section id="about">
-            <p class="section-title">About</p>
-            <div class="about-content">
-                <p>I build backend systems that handle real traffic and solve actual business problems. My work sits at the intersection of AI integration, blockchain infrastructure, and traditional fintech — wherever there's a need for reliable, high-throughput APIs.</p>
-                <p>Currently at Doaz AI, where I architect microservices processing 100K+ daily requests. Before that, I spent time at Funavry Technologies leading a backend team that shipped 10+ blockchain projects and grew the client portfolio to 20+ enterprise accounts.</p>
-                <p>I care about writing code that other engineers can maintain, systems that don't page you at 3am, and shipping things that users actually need.</p>
-            </div>
-
-            <div class="metrics">
-                <div class="metric">
-                    <div class="metric-value">4+</div>
-                    <div class="metric-label">Years Experience</div>
-                </div>
-                <div class="metric">
-                    <div class="metric-value">100K+</div>
-                    <div class="metric-label">Daily API Requests</div>
-                </div>
-                <div class="metric">
-                    <div class="metric-value">10+</div>
-                    <div class="metric-label">Projects Shipped</div>
-                </div>
-            </div>
-        </section>
-
-        <section id="skills">
-            <p class="section-title">What I Work With</p>
-            <div class="skills-grid">
-                <div class="skill-group">
-                    <h3>Backend</h3>
-                    <p>Node.js, NestJS, Express, AdonisJS, TypeScript, GraphQL, WebSockets</p>
-                </div>
-                <div class="skill-group">
-                    <h3>Databases</h3>
-                    <p>PostgreSQL, MongoDB, MySQL, Redis, Elasticsearch</p>
-                </div>
-                <div class="skill-group">
-                    <h3>Cloud & DevOps</h3>
-                    <p>AWS (EC2, Lambda, S3, RDS), GCP, Docker, Kubernetes, GitHub Actions</p>
-                </div>
-                <div class="skill-group">
-                    <h3>Blockchain & AI</h3>
-                    <p>Web3.js, Ethers.js, Smart Contracts, AI/ML API Integration, OCR</p>
+    <header>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">Available for opportunities</div>
+                <h1 class="hero-title">
+                    I'm Muhammad Azhar<br>
+                    <span class="gradient-text">Backend Engineer</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Building scalable backend systems for AI, Blockchain, and Fintech products. 
+                    4+ years crafting high-performance APIs that power products used by 100K+ users globally.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn btn-primary">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                            <polyline points="22,6 12,13 2,6"/>
+                        </svg>
+                        Get in Touch
+                    </a>
+                    <a href="#projects" class="btn btn-secondary">
+                        View Projects
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="5" y1="12" x2="19" y2="12"/>
+                            <polyline points="12 5 19 12 12 19"/>
+                        </svg>
+                    </a>
                 </div>
             </div>
-        </section>
+        </div>
+        <div class="scroll-indicator">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 5v14M19 12l-7 7-7-7"/>
+            </svg>
+            Scroll
+        </div>
+    </header>
 
-        <section id="projects">
-            <p class="section-title">Projects</p>
-
-            <div class="project">
-                <div class="project-header">
-                    <h3><a href="https://chaingpt.org" target="_blank">ChainGPT</a></h3>
-                    <span class="project-type">AI & Web3</span>
+    <section id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image">
+                    <div class="about-image-wrapper">
+                        <div class="about-image-inner">
+                            <img src="https://avatars.githubusercontent.com/u/64686275?v=4" alt="Muhammad Azhar">
+                        </div>
+                    </div>
+                    <div class="about-decoration"></div>
                 </div>
-                <p>Backend architecture for AI-powered Web3 platform. Smart contract generators, NFT tools, AI chatbots. Optimized response times by 60% through distributed caching. Serves 100K+ users globally.</p>
-                <div class="project-tags">
-                    <span>Node.js</span>
-                    <span>NestJS</span>
-                    <span>PostgreSQL</span>
-                    <span>Web3.js</span>
-                    <span>AI APIs</span>
-                </div>
-            </div>
-
-            <div class="project">
-                <div class="project-header">
-                    <h3>Doazo</h3>
-                    <span class="project-type">AI Platform</span>
-                </div>
-                <p>Enterprise AI assistant platform. Built the backend handling AI model orchestration, conversation management, and multi-tenant architecture. Integrated multiple LLM providers with fallback mechanisms and response caching that cut inference costs by 40%.</p>
-                <div class="project-tags">
-                    <span>NestJS</span>
-                    <span>PostgreSQL</span>
-                    <span>Redis</span>
-                    <span>LLM APIs</span>
-                </div>
-            </div>
-
-            <div class="project">
-                <div class="project-header">
-                    <h3>PointChecker</h3>
-                    <span class="project-type">AI / Document Processing</span>
-                </div>
-                <p>AI-powered document verification system. Designed APIs for OCR processing, data extraction, and automated validation workflows. Handles thousands of document scans daily for enterprise clients.</p>
-                <div class="project-tags">
-                    <span>NestJS</span>
-                    <span>OCR Integration</span>
-                    <span>AI/ML APIs</span>
-                </div>
-            </div>
-
-            <div class="project">
-                <div class="project-header">
-                    <h3>Safer</h3>
-                    <span class="project-type">AI / Risk Assessment</span>
-                </div>
-                <p>Risk assessment platform using ML models. Built the scoring engine APIs and integrated third-party AI services for real-time threat analysis and risk evaluation.</p>
-                <div class="project-tags">
-                    <span>Node.js</span>
-                    <span>PostgreSQL</span>
-                    <span>ML APIs</span>
-                </div>
-            </div>
-
-            <div class="project">
-                <div class="project-header">
-                    <h3>Inscanner</h3>
-                    <span class="project-type">AI / OCR</span>
-                </div>
-                <p>Intelligent document scanner with AI text extraction. Backend handles image processing pipelines, OCR integration, and structured data output for various document types.</p>
-                <div class="project-tags">
-                    <span>NestJS</span>
-                    <span>Image Processing</span>
-                    <span>OCR</span>
-                </div>
-            </div>
-
-            <div class="project">
-                <div class="project-header">
-                    <h3><a href="https://pad.chaingpt.org" target="_blank">ChainGPT Pad</a></h3>
-                    <span class="project-type">Blockchain</span>
-                </div>
-                <p>Decentralized launchpad for Web3 startups. Built KYC verification flows, whitelisting systems, and on-chain allocation tracking. Integrated with multiple blockchain networks.</p>
-                <div class="project-tags">
-                    <span>Express.js</span>
-                    <span>PostgreSQL</span>
-                    <span>Blockchain</span>
-                </div>
-            </div>
-
-            <div class="project">
-                <div class="project-header">
-                    <h3><a href="https://fusionsuite.net" target="_blank">FusionSuite</a></h3>
-                    <span class="project-type">Enterprise SaaS</span>
-                </div>
-                <p>QA management platform for software teams. Test case management, bug tracking, reporting dashboards, and team collaboration features.</p>
-                <div class="project-tags">
-                    <span>NestJS</span>
-                    <span>PostgreSQL</span>
-                    <span>Redis</span>
-                </div>
-            </div>
-
-            <div class="project">
-                <div class="project-header">
-                    <h3>United Bank Limited</h3>
-                    <span class="project-type">Fintech</span>
-                </div>
-                <p>Secure banking APIs processing millions in daily transactions. Worked on payment gateways, account management, and compliance reporting systems.</p>
-                <div class="project-tags">
-                    <span>Node.js</span>
-                    <span>PostgreSQL</span>
-                    <span>Security</span>
-                </div>
-            </div>
-        </section>
-
-        <section id="experience">
-            <p class="section-title">Experience</p>
-
-            <div class="experience-item">
-                <div class="experience-header">
-                    <h3>Senior Backend Engineer</h3>
-                    <span class="experience-date">Jul 2024 — Present</span>
-                </div>
-                <p class="experience-company">Doaz AI · Remote</p>
-                <p>Architecting microservices handling 100K+ daily API requests. Leading a team of 5 engineers across multiple time zones. Reduced cloud costs by 30% while maintaining 99.9% uptime. Cut inference latency by 40% through optimized caching.</p>
-            </div>
-
-            <div class="experience-item">
-                <div class="experience-header">
-                    <h3>Backend Team Lead</h3>
-                    <span class="experience-date">Feb 2023 — Apr 2024</span>
-                </div>
-                <p class="experience-company">Funavry Technologies · Islamabad</p>
-                <p>Led technical direction resulting in 150% revenue growth. Delivered 10+ blockchain projects on time. Built the backend for ChainGPT platform serving 100K+ users. Expanded client portfolio to 20+ enterprise accounts.</p>
-            </div>
-
-            <div class="experience-item">
-                <div class="experience-header">
-                    <h3>Software Engineer</h3>
-                    <span class="experience-date">Nov 2021 — Jan 2023</span>
-                </div>
-                <p class="experience-company">O3 Interfaces · Islamabad</p>
-                <p>Built backend systems using Node.js and NestJS. Migrated legacy Firebase backend to scalable RESTful architecture, improving performance by 200%. Maintained 85%+ code coverage.</p>
-            </div>
-
-            <div class="experience-item">
-                <div class="experience-header">
-                    <h3>Junior Backend Developer</h3>
-                    <span class="experience-date">Feb 2021 — Nov 2021</span>
-                </div>
-                <p class="experience-company">IT Resources · Islamabad</p>
-                <p>Developed RESTful APIs for web and mobile applications. Integrated third-party APIs and services. Worked in Agile teams.</p>
-            </div>
-        </section>
-
-        <section id="contact">
-            <p class="section-title">Get in Touch</p>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <p>Open to remote opportunities worldwide, or relocation to UAE, Germany, UK, US, Canada, Singapore, or Australia. Available immediately for remote roles.</p>
-                    <div class="contact-details">
-                        <a href="mailto:mazee762@gmail.com">mazee762@gmail.com</a>
-                        <a href="tel:+923217132762">+92 321 7132762</a>
+                <div class="about-content">
+                    <p class="section-label">About Me</p>
+                    <h3>Building systems that scale</h3>
+                    <p>
+                        I build backend systems that handle real traffic and solve actual business problems. 
+                        My work sits at the intersection of AI integration, blockchain infrastructure, and 
+                        traditional fintech — wherever there's a need for reliable, high-throughput APIs.
+                    </p>
+                    <p>
+                        Currently at Doaz AI, where I architect microservices processing 100K+ daily requests. 
+                        I've led teams across timezones and shipped products that drive real revenue.
+                    </p>
+                    <div class="about-stats">
+                        <div class="stat-card">
+                            <div class="stat-value">4+</div>
+                            <div class="stat-label">Years Experience</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value">100K+</div>
+                            <div class="stat-label">Daily Requests</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value">10+</div>
+                            <div class="stat-label">Projects Shipped</div>
+                        </div>
                     </div>
                 </div>
-                <div class="contact-links">
-                    <a href="https://github.com/mazee762" target="_blank">GitHub →</a>
-                    <a href="https://linkedin.com/in/muhammad-azhar-5a474718b/" target="_blank">LinkedIn →</a>
-                    <a href="https://twitter.com/mazee762" target="_blank">Twitter →</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-label">Expertise</p>
+                <h2 class="section-title">What I Work With</h2>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-icon backend">⚡</div>
+                    <h3>Backend</h3>
+                    <p>Node.js, NestJS, Express, AdonisJS, TypeScript, GraphQL, WebSockets, REST APIs</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon database">🗄️</div>
+                    <h3>Databases</h3>
+                    <p>PostgreSQL, MongoDB, MySQL, Redis, Elasticsearch, Database Optimization</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon cloud">☁️</div>
+                    <h3>Cloud & DevOps</h3>
+                    <p>AWS (EC2, Lambda, S3, RDS), GCP, Docker, Kubernetes, CI/CD, GitHub Actions</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon blockchain">🔗</div>
+                    <h3>Blockchain & AI</h3>
+                    <p>Web3.js, Ethers.js, Smart Contracts, LLM APIs, OCR Integration, ML APIs</p>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <footer>
-            <p>© 2024 Muhammad Azhar. Built with care.</p>
-        </footer>
-    </div>
+    <section id="projects">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-label">Portfolio</p>
+                <h2 class="section-title">Featured Projects</h2>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card featured-project">
+                    <div class="project-content">
+                        <div class="project-header">
+                            <span class="project-type ai">AI & Web3</span>
+                        </div>
+                        <h3><a href="https://chaingpt.org" target="_blank">ChainGPT Platform</a></h3>
+                        <p>Backend architecture for AI-powered Web3 platform. Smart contract generators, NFT tools, AI chatbots. Optimized response times by 60% through distributed caching. Serves 100K+ users globally.</p>
+                        <div class="project-tags">
+                            <span>Node.js</span>
+                            <span>NestJS</span>
+                            <span>PostgreSQL</span>
+                            <span>Web3.js</span>
+                            <span>AI APIs</span>
+                        </div>
+                    </div>
+                    <div class="project-visual">
+                        ChainGPT
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <span class="project-type ai">AI Platform</span>
+                    </div>
+                    <h3>Doazo</h3>
+                    <p>Enterprise AI assistant platform. Backend handling AI model orchestration, conversation management, and multi-tenant architecture. Cut inference costs by 40%.</p>
+                    <div class="project-tags">
+                        <span>NestJS</span>
+                        <span>PostgreSQL</span>
+                        <span>Redis</span>
+                        <span>LLM APIs</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <span class="project-type ai">AI / OCR</span>
+                    </div>
+                    <h3>PointChecker</h3>
+                    <p>AI-powered document verification system. APIs for OCR processing, data extraction, and automated validation. Handles thousands of scans daily.</p>
+                    <div class="project-tags">
+                        <span>NestJS</span>
+                        <span>OCR</span>
+                        <span>AI/ML APIs</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <span class="project-type ai">AI / Risk</span>
+                    </div>
+                    <h3>Safer</h3>
+                    <p>Risk assessment platform using ML models. Built scoring engine APIs and integrated third-party AI services for real-time threat analysis.</p>
+                    <div class="project-tags">
+                        <span>Node.js</span>
+                        <span>PostgreSQL</span>
+                        <span>ML APIs</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <span class="project-type ai">AI / OCR</span>
+                    </div>
+                    <h3>Inscanner</h3>
+                    <p>Intelligent document scanner with AI text extraction. Backend handles image processing pipelines, OCR integration, and structured data output.</p>
+                    <div class="project-tags">
+                        <span>NestJS</span>
+                        <span>Image Processing</span>
+                        <span>OCR</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <span class="project-type blockchain">Blockchain</span>
+                    </div>
+                    <h3><a href="https://pad.chaingpt.org" target="_blank">ChainGPT Pad</a></h3>
+                    <p>Decentralized launchpad for Web3 startups. KYC verification flows, whitelisting systems, and on-chain allocation tracking.</p>
+                    <div class="project-tags">
+                        <span>Express.js</span>
+                        <span>PostgreSQL</span>
+                        <span>Blockchain</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <span class="project-type">Enterprise SaaS</span>
+                    </div>
+                    <h3><a href="https://fusionsuite.net" target="_blank">FusionSuite</a></h3>
+                    <p>QA management platform for software teams. Test case management, bug tracking, reporting dashboards, and team collaboration.</p>
+                    <div class="project-tags">
+                        <span>NestJS</span>
+                        <span>PostgreSQL</span>
+                        <span>Redis</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <span class="project-type fintech">Fintech</span>
+                    </div>
+                    <h3>United Bank Limited</h3>
+                    <p>Secure banking APIs processing millions in daily transactions. Payment gateways, account management, compliance reporting.</p>
+                    <div class="project-tags">
+                        <span>Node.js</span>
+                        <span>PostgreSQL</span>
+                        <span>Security</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-label">Career</p>
+                <h2 class="section-title">Work Experience</h2>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <h3>Senior Backend Engineer</h3>
+                            <span class="timeline-date">Jul 2024 — Present</span>
+                        </div>
+                        <p class="timeline-company">Doaz AI · Remote</p>
+                        <p>Architecting microservices handling 100K+ daily API requests. Leading a team of 5 engineers across multiple time zones. Reduced cloud costs by 30% while maintaining 99.9% uptime.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <h3>Backend Team Lead</h3>
+                            <span class="timeline-date">Feb 2023 — Apr 2024</span>
+                        </div>
+                        <p class="timeline-company">Funavry Technologies · Islamabad</p>
+                        <p>Led technical direction resulting in 150% revenue growth. Delivered 10+ blockchain projects. Built ChainGPT backend serving 100K+ users. Expanded client portfolio to 20+ enterprise accounts.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <h3>Software Engineer</h3>
+                            <span class="timeline-date">Nov 2021 — Jan 2023</span>
+                        </div>
+                        <p class="timeline-company">O3 Interfaces · Islamabad</p>
+                        <p>Built backend systems using Node.js and NestJS. Migrated legacy Firebase backend to scalable RESTful architecture, improving performance by 200%.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <h3>Junior Backend Developer</h3>
+                            <span class="timeline-date">Feb 2021 — Nov 2021</span>
+                        </div>
+                        <p class="timeline-company">IT Resources · Islamabad</p>
+                        <p>Developed RESTful APIs for web and mobile applications. Integrated third-party APIs and services.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <p class="section-label">Contact</p>
+                    <h3>Let's work <span>together</span></h3>
+                    <p>
+                        Open to remote opportunities worldwide, or relocation to UAE, Germany, UK, US, Canada, 
+                        Singapore, or Australia. Let's build something great.
+                    </p>
+                    <div class="contact-links">
+                        <a href="mailto:mazee762@gmail.com" class="contact-link">
+                            <div class="contact-link-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                    <polyline points="22,6 12,13 2,6"/>
+                                </svg>
+                            </div>
+                            <div class="contact-link-text">
+                                <p class="contact-link-label">Email</p>
+                                <p class="contact-link-value">mazee762@gmail.com</p>
+                            </div>
+                        </a>
+                        <a href="tel:+923217132762" class="contact-link">
+                            <div class="contact-link-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                                </svg>
+                            </div>
+                            <div class="contact-link-text">
+                                <p class="contact-link-label">Phone</p>
+                                <p class="contact-link-value">+92 321 7132762</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="contact-card">
+                    <h4>Ready for new challenges</h4>
+                    <p>
+                        I'm currently looking for senior backend roles where I can contribute to building 
+                        scalable systems and lead engineering teams. Experienced with remote work across 
+                        US, Europe, and APAC time zones.
+                    </p>
+                    <div class="availability-badge">
+                        Available for immediate start
+                    </div>
+                    <div class="social-links">
+                        <a href="https://github.com/mazee762" target="_blank" class="social-link">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                        </a>
+                        <a href="https://linkedin.com/in/muhammad-azhar-5a474718b/" target="_blank" class="social-link">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            </svg>
+                        </a>
+                        <a href="https://twitter.com/mazee762" target="_blank" class="social-link">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>© 2024 Muhammad Azhar · Built with passion · <a href="mailto:mazee762@gmail.com">mazee762@gmail.com</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scroll for nav links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
